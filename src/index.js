@@ -24,7 +24,7 @@ class LazyLoad {
     }
 
     _setObserver() {
-        if(!('IntersectionObserver' in window)){
+        if (!('IntersectionObserver' in window)) {
             return console.warn('当前浏览器不支持IntersectionObserver或没有加入相应polyfill ')
         }
 
@@ -37,9 +37,7 @@ class LazyLoad {
                     console.log(`${el.dataset.src}进入可视区..`)
                     this._loadImg(el)
                 }
-
             }
-
         }, this.options)
     }
 
@@ -56,7 +54,7 @@ class LazyLoad {
     }
 
     _checkImgs() {
-        if(!this._io){
+        if (!this._io) {
             this.update()
         }
         this._elements.forEach(item => this.io.observe(item))
@@ -64,10 +62,10 @@ class LazyLoad {
 
     update() {
         // fallback处理
-        if(this.io){
+        if (this.io) {
             return
         }
-        this._elements.forEach((el) =>{
+        this._elements.forEach((el) => {
             this._loadImg(el)
         })
     }
