@@ -44,7 +44,9 @@ class LazyLoad {
     _loadImg(el) {
         let self = this
         const source = el.dataset.src
+
         el.src = source
+        // el.style.opacity = 1
         // el.removeAttribute('data-src')
         // 加载完成之后 不再observer
         el.onload = el.onerror = function () {
@@ -57,7 +59,11 @@ class LazyLoad {
         if (!this._io) {
             this.update()
         }
-        this._elements.forEach(item => this.io.observe(item))
+        this._elements.forEach(el => {
+            // el.style.opacity = 0
+            // el.style.transition = 'opacity 0.3s'
+            this.io.observe(el)
+        })
     }
 
     update() {
