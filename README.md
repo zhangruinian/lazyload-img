@@ -23,3 +23,4 @@ destroy | 销毁LazyLoad实例程序
  
 ## todo
 * effect 图片出现效果 fadeIn等 200-400ms 暂时觉得用处不大
+* vue等使用webpack打包构建的图片 data-src图片路径和hash并对不上,这是个问题...

@@ -1,6 +1,6 @@
 {
   "name": "lazy-load-imgs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "原生js懒加载插件",
   "main": "dist/lazyLoadImg.js",
   "directories": {
@@ -27,7 +27,7 @@
   },
   "scripts": {
     "lint": "eslint . --fix",
-    "build": "webpack --config webpack.config.js"
+    "build": "npm run lint && webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
