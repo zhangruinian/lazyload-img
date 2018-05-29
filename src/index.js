@@ -19,7 +19,7 @@ class LazyLoad {
         let root = this.options.root || document
 
         this._setObserver()
-        this._elements = Array.from(root.querySelectorAll(`img[data-${dataSrc}]`))
+        this._elements = Array.prototype.slice.call(root.querySelectorAll(`img[data-${dataSrc}]`))
         this._checkImgs()
     }
 
@@ -51,7 +51,9 @@ class LazyLoad {
         // 加载完成之后 不再observer
         el.onload = el.onerror = function () {
             console.log(`${this.dataset.src}图片加载完成`)
-            self.io.unobserve(el)
+            if (self.io) {
+                self.io.unobserve(el)
+            }
         }
     }
 
@@ -67,11 +69,11 @@ class LazyLoad {
     }
 
     update() {
-        // fallback处理
+        // fallback处理 和强制执行调用会
         if (this.io) {
             return
         }
-        this._elements.forEach((el) => {
+        this._elements.forEach(el => {
             this._loadImg(el)
         })
     }
@@ -83,6 +85,4 @@ class LazyLoad {
     }
 }
 
-// export default LazyLoad
-
-
+export default LazyLoad
